@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batch Song Downloader</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .box {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 650px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+        }
+        h2 { margin: 0 0 8px 0; }
+        p { color: #b3b3b3; font-size: 14px; margin: 0 0 20px 0; }
+        .row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .num {
+            width: 24px;
+            color: #1db954;
+            font-weight: bold;
+            text-align: right;
+        }
+        input {
+            flex: 1;
+            padding: 10px 12px;
+            background-color: #181818;
+            color: #ffffff;
+            border: 1px solid #333;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        input:focus {
+            outline: none;
+            border-color: #1db954;
+        }
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 12px;
+            background-color: #1db954;
+            color: #000000;
+            font-weight: bold;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        button:hover { background-color: #1ed760; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Batch Song Downloader</h2>
+        <p>Enter song titles (and optional artist names) below. Downloads as 192kbps MP3.</p>
+
+        <form action="/download" method="POST">
+            {% for i in range(1, 9) %}
+            <div class="row">
+                <span class="num">{{ i }}.</span>
+                <input type="text" name="song" placeholder="Song name (e.g. Blinding Lights)">
+                <input type="text" name="artist" placeholder="Artist (optional, e.g. The Weeknd)">
+            </div>
+            {% endfor %}
+
+            <button type="submit">Download MP3s</button>
+        </form>
+    </div>
+</body>
+</html>
